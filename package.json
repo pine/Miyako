@@ -6,6 +6,7 @@
     "@slack/client": "^3.14.2",
     "config": "^1.28.1",
     "cookie": "^0.3.1",
+    "execall": "^1.0.0",
     "got": "^8.0.0"
   },
   "repository": "https://github.com/pine/Miyako.git",

@@ -2,15 +2,18 @@
 
 const config = require('config')
 
-const JIRA = require('../lib/jira')
+const Jira = require('../lib/jira')
+const JiraResolver = require('../lib/jira_resolver')
 
 const session = config.get('session')
 const { baseUrl, projectKeys } = config.get('jira')
 
 !async function() {
-  const jira = new JIRA({ session, baseUrl })
-  const issue = await jira.fetchIssue('')
-  console.log(`[${issue.status}] ${issue.key} ${issue.summary} (${issue.assignee})`)
+  const jira = new Jira({ session, baseUrl })
+  const jiraResolver = new JiraResolver({ jira, projectKeys })
+
+  // const issue = await jira.fetchIssue('')
+  // console.log(`[${issue.status}] ${issue.key} ${issue.summary} (${issue.assignee})`)
 }()
 
 // vim: se sw=2 ts=2 sts=2 et ft=javascript :
