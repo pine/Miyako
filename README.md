@@ -11,7 +11,7 @@
 
 ```
 curl -X POST \
-  https://www.example.net/jira/rest/auth/1/session \
+  https://example.atlassian.net/rest/auth/1/session \
   -H 'content-type: application/json' \
   -d '{ "username": "username@example.com", "password": "password" }'
 ```
