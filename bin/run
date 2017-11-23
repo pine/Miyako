@@ -10,11 +10,11 @@ const SlackBot = require('../lib/slack_bot')
 const SlackRoomList = require('../lib/slack_room_list')
 
 const { baseUrl, projectKeys, session } = config.get('jira')
-const slack = config.get('slack')
+const { token, username, iconUrl } = config.get('slack')
 
 !async function() {
-  const rtm = new RtmClient(slack.token, { autoReconnect: true, logLevel: 'error' })
-  const web = new WebClient(slack.token)
+  const rtm = new RtmClient(token, { autoReconnect: true, logLevel: 'error' })
+  const web = new WebClient(token)
 
   const jira = new Jira({ session, baseUrl })
   const resolver = new JiraResolver({ jira, projectKeys })
@@ -22,7 +22,7 @@ const slack = config.get('slack')
 
   await rooms.sync()
 
-  const slackBot = new SlackBot({ rtm, web, resolver, rooms })
+  const slackBot = new SlackBot({ rtm, web, resolver, rooms, username, iconUrl })
   slackBot.listen()
 }()
 
