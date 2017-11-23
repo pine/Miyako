@@ -8,9 +8,8 @@ const Jira = require('../lib/jira')
 const JiraResolver = require('../lib/jira_resolver')
 const SlackRoomList = require('../lib/slack_room_list')
 
-const session = config.get('session')
+const { baseUrl, projectKeys, session } = config.get('jira')
 const slack = config.get('slack')
-const { baseUrl, projectKeys } = config.get('jira')
 
 !async function() {
   const web = new WebClient(slack.token)
