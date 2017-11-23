@@ -2,15 +2,24 @@
 
 const config = require('config')
 
+const { WebClient } = require('@slack/client')
+
 const Jira = require('../lib/jira')
 const JiraResolver = require('../lib/jira_resolver')
+const SlackRoomList = require('../lib/slack_room_list')
 
 const session = config.get('session')
+const slack = config.get('slack')
 const { baseUrl, projectKeys } = config.get('jira')
 
 !async function() {
+  const web = new WebClient(slack.token)
+
   const jira = new Jira({ session, baseUrl })
   const jiraResolver = new JiraResolver({ jira, projectKeys })
+  const slackRoomList = new SlackRoomList({ web })
+
+  await slackRoomList.sync()
 
   // const issue = await jira.fetchIssue('')
   // console.log(`[${issue.status}] ${issue.key} ${issue.summary} (${issue.assignee})`)

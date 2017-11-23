@@ -11,7 +11,7 @@
     "got": "^8.0.0",
     "lodash.get": "^4.4.2",
     "promise-retry": "^1.1.1",
-    "rx": "^4.1.0"
+    "thenify": "^3.3.0"
   },
   "repository": "https://github.com/pine/Miyako.git",
   "author": {
