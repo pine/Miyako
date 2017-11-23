@@ -24,7 +24,6 @@ const slack = config.get('slack')
 
   const slackBot = new SlackBot({ rtm, web, resolver, rooms })
   slackBot.listen()
-  // const issue = await jira.fetchIssue('')
 }()
 
 // vim: se sw=2 ts=2 sts=2 et ft=javascript :
