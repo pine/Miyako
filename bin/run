@@ -2,26 +2,29 @@
 
 const config = require('config')
 
-const { WebClient } = require('@slack/client')
+const { RtmClient, WebClient } = require('@slack/client')
 
 const Jira = require('../lib/jira')
 const JiraResolver = require('../lib/jira_resolver')
+const SlackBot = require('../lib/slack_bot')
 const SlackRoomList = require('../lib/slack_room_list')
 
 const { baseUrl, projectKeys, session } = config.get('jira')
 const slack = config.get('slack')
 
 !async function() {
+  const rtm = new RtmClient(slack.token, { autoReconnect: true, logLevel: 'error' })
   const web = new WebClient(slack.token)
 
   const jira = new Jira({ session, baseUrl })
-  const jiraResolver = new JiraResolver({ jira, projectKeys })
-  const slackRoomList = new SlackRoomList({ web })
+  const resolver = new JiraResolver({ jira, projectKeys })
+  const rooms = new SlackRoomList({ web })
 
-  await slackRoomList.sync()
+  await rooms.sync()
 
+  const slackBot = new SlackBot({ rtm, web, resolver, rooms })
+  slackBot.listen()
   // const issue = await jira.fetchIssue('')
-  // console.log(`[${issue.status}] ${issue.key} ${issue.summary} (${issue.assignee})`)
 }()
 
 // vim: se sw=2 ts=2 sts=2 et ft=javascript :
