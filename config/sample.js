@@ -14,6 +14,7 @@ module.exports = {
   slack: {
     username: 'JIRA',
     iconUrl: 'http://www.example.com/jira.png',
+    refresh: 10 * 60 * 1000, // 60 min
     teams: [
       {
         name: 'team',
