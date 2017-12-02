@@ -1,6 +1,7 @@
 'use strict'
 
 module.exports = {
+  // JIRA
   jira: {
     baseUrl: 'https://example.atlassian.net/',
     session: {
@@ -9,13 +10,24 @@ module.exports = {
     },
   },
 
+  // Slack
   slack: {
-    token: 'XXX',
     username: 'JIRA',
     iconUrl: 'http://www.example.com/jira.png',
+    teams: [
+      {
+        name: 'team',
+        token: 'XXX',
+      },
+    ],
   },
 
+  // JIRA projects <-> Slack teams
   projects: [
-    { key: 'KEY', channel: 'general' },
+    {
+      key: 'KEY',
+      team: 'team',
+      channel: 'general',
+    },
   ],
 }

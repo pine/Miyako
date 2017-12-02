@@ -11,25 +11,27 @@ const SlackBot = require('../lib/slack_bot')
 const SlackRoomList = require('../lib/slack_room_list')
 
 const { baseUrl, session } = config.get('jira')
-const { token, username, iconUrl } = config.get('slack')
+const { teams, username, iconUrl } = config.get('slack')
 const projects = config.get('projects')
 
-!async function() {
-  const rtm = new RtmClient(token, { autoReconnect: true, logLevel: 'error' })
-  const web = new WebClient(token)
-
+!function() {
   const map = new ProjectMapping({ projects })
   const jira = new Jira({ session, baseUrl })
   const resolver = new JiraResolver({
     jira,
     projectKeys: map.getProjectKeys(),
   })
-  const rooms = new SlackRoomList({ web })
 
-  await rooms.sync()
+  teams.forEach(async team => {
+    const rtm = new RtmClient(team.token, { autoReconnect: true, logLevel: 'error' })
+    const web = new WebClient(team.token)
 
-  const slackBot = new SlackBot({ rtm, web, map, resolver, rooms, username, iconUrl })
-  slackBot.listen()
+    const rooms = new SlackRoomList({ web })
+    await rooms.sync()
+
+    const slackBot = new SlackBot({ rtm, web, team: team.name, map, resolver, rooms, username, iconUrl })
+    slackBot.listen()
+  })
 }()
 
 // vim: se sw=2 ts=2 sts=2 et ft=javascript :
