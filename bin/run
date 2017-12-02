@@ -6,23 +6,29 @@ const { RtmClient, WebClient } = require('@slack/client')
 
 const Jira = require('../lib/jira')
 const JiraResolver = require('../lib/jira_resolver')
+const ProjectMapping = require('../lib/project_mapping')
 const SlackBot = require('../lib/slack_bot')
 const SlackRoomList = require('../lib/slack_room_list')
 
-const { baseUrl, projectKeys, session } = config.get('jira')
-const { token, channels, username, iconUrl } = config.get('slack')
+const { baseUrl, session } = config.get('jira')
+const { token, username, iconUrl } = config.get('slack')
+const projects = config.get('projects')
 
 !async function() {
   const rtm = new RtmClient(token, { autoReconnect: true, logLevel: 'error' })
   const web = new WebClient(token)
 
+  const map = new ProjectMapping({ projects })
   const jira = new Jira({ session, baseUrl })
-  const resolver = new JiraResolver({ jira, projectKeys })
+  const resolver = new JiraResolver({
+    jira,
+    projectKeys: map.getProjectKeys(),
+  })
   const rooms = new SlackRoomList({ web })
 
   await rooms.sync()
 
-  const slackBot = new SlackBot({ rtm, web, resolver, rooms, channels, username, iconUrl })
+  const slackBot = new SlackBot({ rtm, web, map, resolver, rooms, username, iconUrl })
   slackBot.listen()
 }()
 
