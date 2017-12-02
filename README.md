@@ -16,5 +16,19 @@ curl -X POST \
   -d '{ "username": "username@example.com", "password": "password" }'
 ```
 
+### 2. Edit config
+
+```
+$ cp config/sample.js config/default.js
+# vim config/default.js
+```
+
+### 3. Run
+
+```
+$ yarn
+$ ./bin/run
+```
+
 ## License
 MIT &copy; Pine Mizune
