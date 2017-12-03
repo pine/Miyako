@@ -1,5 +1,5 @@
 ## Miyako
-
+:zap: The lightning-fast Atlassian bot for Slack.
 
 ## Requirements
 
