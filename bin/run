@@ -26,7 +26,7 @@ const projects = config.get('projects')
     const rtm = new RtmClient(team.token, { autoReconnect: true, logLevel: 'error' })
     const web = new WebClient(team.token)
 
-    const rooms = new SlackRoomList({ web, refresh  })
+    const rooms = new SlackRoomList({ domain: team.name, web, refresh })
     await rooms.sync()
 
     const slackBot = new SlackBot({ rtm, web, team: team.name, map, resolver, rooms, username, iconUrl })
