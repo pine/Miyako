@@ -24,24 +24,20 @@ const CONFLUENCE_SPACES = config.get('confluenceSpaces')
   const confluence = new Confluence({ atlassian })
   const confluenceSpaces = new ConfluenceSpaces(CONFLUENCE_SPACES)
   const confluenceResolver = new ConfluenceResolver({ confluence, confluenceSpaces })
+  const jira = new Jira({ atlassian })
+  const jiraProjects = new JiraProjects(JIRA_PROJECTS)
+  const jiraResolver = new JiraResolver({ jira, jiraProjects })
 
-  // !async function() {
-  //   console.log(await confluence.resolveContent('94022844'))
-  // }()
-  // const jira = new Jira({ atlassian })
-  // const jiraProjects = new JiraProjects(JIRA_PROJECTS)
-  // const jiraResolver = new JiraResolver({ jira, jiraProjects })
+  teams.forEach(async team => {
+    const rtm = new RtmClient(team.token, { autoReconnect: true, logLevel: 'error' })
+    const web = new WebClient(team.token)
 
-  // teams.forEach(async team => {
-  //   const rtm = new RtmClient(team.token, { autoReconnect: true, logLevel: 'error' })
-  //   const web = new WebClient(team.token)
+    const rooms = new SlackRoomList({ domain: team.name, web, refresh })
+    await rooms.sync()
 
-  //   const rooms = new SlackRoomList({ domain: team.name, web, refresh })
-  //   await rooms.sync()
-
-  //   const slackBot = new SlackBot({ rtm, web, team: team.name, jiraResolver, rooms, username, iconUrl })
-  //   slackBot.listen()
-  // })
+    const slackBot = new SlackBot({ rtm, web, team: team.name, confluenceResolver, jiraResolver, rooms, username, iconUrl })
+    slackBot.listen()
+  })
 }()
 
 // vim: se sw=2 ts=2 sts=2 et ft=javascript :

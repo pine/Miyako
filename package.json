@@ -11,10 +11,11 @@
     "got": "^8.0.0",
     "lodash": "^4.17.4",
     "promise-retry": "^1.1.1",
-    "thenify": "^3.3.0"
+    "thenify": "^3.3.0",
+    "url-join": "^2.0.2"
   },
   "engines": {
-    "node" : ">=8.0.0"
+    "node": ">=8.0.0"
   },
   "repository": "https://github.com/pine/Miyako.git",
   "author": {
