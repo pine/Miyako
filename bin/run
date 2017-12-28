@@ -6,6 +6,8 @@ const { RtmClient, WebClient } = require('@slack/client')
 
 const Atlassian = require('../lib/atlassian')
 const Confluence = require('../lib/confluence')
+const ConfluenceSpaces = require('../lib/confluence_spaces')
+const ConfluenceResolver = require('../lib/confluence_resolver')
 const Jira = require('../lib/jira')
 const JiraResolver = require('../lib/jira_resolver')
 const JiraProjects = require('../lib/jira_projects')
@@ -15,14 +17,17 @@ const SlackRoomList = require('../lib/slack_room_list')
 const ATLASSIAN = config.get('atlassian')
 const { teams, username, iconUrl, refresh } = config.get('slack')
 const JIRA_PROJECTS = config.get('jiraProjects')
+const CONFLUENCE_SPACES = config.get('confluenceSpaces')
 
 !function() {
   const atlassian = new Atlassian(ATLASSIAN)
   const confluence = new Confluence({ atlassian })
+  const confluenceSpaces = new ConfluenceSpaces(CONFLUENCE_SPACES)
+  const confluenceResolver = new ConfluenceResolver({ confluence, confluenceSpaces })
 
-  !async function() {
-    console.log(await confluence.resolveContent('94022844'))
-  }()
+  // !async function() {
+  //   console.log(await confluence.resolveContent('94022844'))
+  // }()
   // const jira = new Jira({ atlassian })
   // const jiraProjects = new JiraProjects(JIRA_PROJECTS)
   // const jiraResolver = new JiraResolver({ jira, jiraProjects })
