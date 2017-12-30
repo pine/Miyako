@@ -6,8 +6,13 @@
 - Yarn
 - Node v`$(cat .node-version)`
 
+## Supported Atlassian products
+
+- Confluence
+- JIRA
+
 ## Getting started
-### 1. Fetch JIRA session
+### 1. Fetch Atlassian session
 
 ```
 $ curl -X POST \
