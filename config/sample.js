@@ -1,9 +1,9 @@
 'use strict'
 
 module.exports = {
-  // JIRA
-  jira: {
-    baseUrl: 'https://example.atlassian.net/',
+  // Atlassian
+  atlassian: {
+    baseUrl: 'https://xxx.atlassian.net/',
     session: {
       name: 'cloud.session.token',
       value: 'XXX',
@@ -12,23 +12,52 @@ module.exports = {
 
   // Slack
   slack: {
-    username: 'JIRA',
-    iconUrl: 'http://www.example.com/jira.png',
-    refresh: 10 * 60 * 1000, // 60 min
+    botUsers: {
+      confluence: {
+        username: 'Confluence',
+        iconUrl: '',
+      },
+      jira: {
+        username: 'JIRA',
+        iconUrl: '',
+      },
+    },
+    refresh: 60 * 60 * 1000, // 60 min
     teams: [
       {
-        name: 'team',
+        domain: 'domain',
         token: 'XXX',
       },
     ],
   },
 
-  // JIRA projects <-> Slack teams
-  projects: [
+  // JIRA projects <-> Slack teams/channels
+  jiraProjects: [
     {
-      key: 'KEY',
-      team: 'team',
-      channel: 'general',
+      jira: {
+        keys: ['XXX'],
+      },
+      slackTeams: [
+        {
+          domain: 'domain',
+          channels: ['general'],
+        },
+      ],
+    },
+  ],
+
+  // Confluence spaces <-> Slack teams/channels
+  confluenceSpaces: [
+    {
+      confluence: {
+        keys: ['XXX'],
+      },
+      slackTeams: [
+        {
+          domain: 'domain',
+          channels: ['general'],
+        },
+      ],
     },
   ],
 }
