@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const config = require('config')
-
 const { RtmClient, WebClient } = require('@slack/client')
 
 const Atlassian = require('../lib/atlassian')
@@ -16,13 +15,13 @@ const SlackChannelResolver = require('../lib/slack_channel_resolver')
 const SlackPostman = require('../lib/slack_postman')
 
 const ATLASSIAN = config.get('atlassian')
-const { teams, username, iconUrl, refresh } = config.get('slack')
+const SLACK = config.get('slack')
 const BOT_USER_JIRA = config.get('slack.botUsers.jira')
 const BOT_USER_CONFLUENCE = config.get('slack.botUsers.confluence')
 const JIRA_PROJECTS = config.get('jiraProjects')
 const CONFLUENCE_SPACES = config.get('confluenceSpaces')
 
-!async function() {
+!function() {
   const atlassian = new Atlassian(ATLASSIAN)
   const confluence = new Confluence({ atlassian })
   const confluenceSpaces = new ConfluenceSpaces(CONFLUENCE_SPACES)
@@ -31,11 +30,15 @@ const CONFLUENCE_SPACES = config.get('confluenceSpaces')
   const jiraProjects = new JiraProjects(JIRA_PROJECTS)
   const jiraResolver = new JiraResolver({ jira, jiraProjects })
 
-  teams.forEach(async team => {
+  SLACK.teams.forEach(async team => {
     const rtm = new RtmClient(team.token, { autoReconnect: true, logLevel: 'error' })
     const web = new WebClient(team.token)
 
-    const slackChannelResolver = new SlackChannelResolver({ domain: team.domain, web, refresh })
+    const slackChannelResolver = new SlackChannelResolver({
+      web,
+      domain: team.domain,
+      refresh: SLACK.refresh,
+    })
     await slackChannelResolver.sync()
 
     const confluencePostman = new SlackPostman({ web, botUser: BOT_USER_CONFLUENCE })
