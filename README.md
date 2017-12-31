@@ -1,4 +1,5 @@
-## Miyako
+## Miyako &nbsp;[![codebeat badge](https://codebeat.co/badges/d9c7e059-d842-4cdb-8949-e8efc43fe1ca)](https://codebeat.co/projects/github-com-pine-miyako-master)
+
 :zap: The lightning-fast Atlassian bot for Slack.
 
 ## Requirements
