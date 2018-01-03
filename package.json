@@ -2,6 +2,9 @@
   "name": "miyako",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
     "@slack/client": "^3.14.2",
     "config": "^1.28.1",
@@ -24,5 +27,8 @@
     "url": "https://github.com/pine"
   },
   "license": "MIT",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "jest": "^22.0.4"
+  }
 }
