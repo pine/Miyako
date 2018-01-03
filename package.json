@@ -17,6 +17,9 @@
     "thenify": "^3.3.0",
     "url-join": "^2.0.2"
   },
+  "devDependencies": {
+    "jest": "^22.0.4"
+  },
   "engines": {
     "node": ">=8.0.0"
   },
@@ -27,8 +30,5 @@
     "url": "https://github.com/pine"
   },
   "license": "MIT",
-  "private": true,
-  "devDependencies": {
-    "jest": "^22.0.4"
-  }
+  "private": true
 }
