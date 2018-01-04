@@ -18,7 +18,8 @@
     "url-join": "^2.0.2"
   },
   "devDependencies": {
-    "jest": "^22.0.4"
+    "jest": "^22.0.4",
+    "nock": "^9.1.5"
   },
   "engines": {
     "node": ">=8.0.0"
