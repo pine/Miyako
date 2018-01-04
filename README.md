@@ -1,5 +1,6 @@
 ## Miyako
 [![Build Status](https://travis-ci.org/pine/Miyako.svg?branch=master)](https://travis-ci.org/pine/Miyako)
+[![codecov](https://codecov.io/gh/pine/Miyako/branch/master/graph/badge.svg)](https://codecov.io/gh/pine/Miyako)
 [![dependencies Status](https://david-dm.org/pine/Miyako/status.svg)](https://david-dm.org/pine/Miyako)
 [![devDependencies Status](https://david-dm.org/pine/Miyako/dev-status.svg)](https://david-dm.org/pine/Miyako?type=dev)
 [![codebeat badge](https://codebeat.co/badges/d9c7e059-d842-4cdb-8949-e8efc43fe1ca)](https://codebeat.co/projects/github-com-pine-miyako-master)
