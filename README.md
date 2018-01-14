@@ -4,6 +4,7 @@
 [![dependencies Status](https://david-dm.org/pine/Miyako/status.svg)](https://david-dm.org/pine/Miyako)
 [![devDependencies Status](https://david-dm.org/pine/Miyako/dev-status.svg)](https://david-dm.org/pine/Miyako?type=dev)
 [![codebeat badge](https://codebeat.co/badges/d9c7e059-d842-4cdb-8949-e8efc43fe1ca)](https://codebeat.co/projects/github-com-pine-miyako-master)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpine%2FMiyako.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpine%2FMiyako?ref=badge_shield)
 
 :zap: The lightning-fast Atlassian bot for Slack.
 
@@ -43,3 +44,6 @@ $ ./bin/run
 
 ## License
 MIT &copy; Pine Mizune
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpine%2FMiyako.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpine%2FMiyako?ref=badge_large)
