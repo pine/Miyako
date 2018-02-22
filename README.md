@@ -1,4 +1,6 @@
 ## Miyako
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/pine/Miyako.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/pine/Miyako.svg?branch=master)](https://travis-ci.org/pine/Miyako)
 [![codecov](https://codecov.io/gh/pine/Miyako/branch/master/graph/badge.svg)](https://codecov.io/gh/pine/Miyako)
 [![dependencies Status](https://david-dm.org/pine/Miyako/status.svg)](https://david-dm.org/pine/Miyako)
