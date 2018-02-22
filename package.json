@@ -16,7 +16,7 @@
     "lodash": "^4.17.4",
     "promise-retry": "^1.1.1",
     "thenify": "^3.3.0",
-    "url-join": "^2.0.2"
+    "url-join": "^4.0.0"
   },
   "devDependencies": {
     "codecov": "^3.0.0",
