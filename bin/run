@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const config = require('config')
-const { RtmClient, WebClient } = require('@slack/client')
+const { RTMClient, WebClient } = require('@slack/client')
 
 const Atlassian = require('../lib/atlassian')
 const Confluence = require('../lib/confluence')
@@ -31,7 +31,7 @@ const CONFLUENCE_SPACES = config.get('confluenceSpaces')
   const jiraResolver = new JiraResolver({ jira, jiraProjects })
 
   SLACK.teams.forEach(async team => {
-    const rtm = new RtmClient(team.token, { autoReconnect: true, logLevel: 'error' })
+    const rtm = new RTMClient(team.token, { autoReconnect: true, logLevel: 'error' })
     const web = new WebClient(team.token)
 
     const slackChannelResolver = new SlackChannelResolver({
