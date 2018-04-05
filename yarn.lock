@@ -14,15 +14,16 @@
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
 
-"@slack/client@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@slack/client/-/client-4.0.0.tgz#bb4575b10adc3cf6a297009acaa2c00ce1b96040"
+"@slack/client@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@slack/client/-/client-4.1.0.tgz#c55c89c259cc5bb5b8ee6b6edba9a574a94809dd"
   dependencies:
     "@types/delay" "^2.0.1"
     "@types/form-data" "^2.2.1"
     "@types/got" "^7.1.7"
     "@types/is-stream" "^1.1.0"
     "@types/loglevel" "^1.5.3"
+    "@types/node" "^9.4.7"
     "@types/p-cancelable" "^0.3.0"
     "@types/p-queue" "^2.3.1"
     "@types/p-retry" "^1.0.1"
@@ -42,7 +43,6 @@
     p-cancelable "^0.3.0"
     p-queue "^2.3.0"
     p-retry "^1.0.0"
-    pjson "^1.0.9"
     retry "^0.10.1"
     url-join "^4.0.0"
     ws "^4.1.0"
@@ -80,6 +80,10 @@
 "@types/node@*":
   version "8.5.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.5.2.tgz#83b8103fa9a2c2e83d78f701a9aa7c9539739aa5"
+
+"@types/node@^9.4.7":
+  version "9.6.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.2.tgz#e49ac1adb458835e95ca6487bc20f916b37aff23"
 
 "@types/p-cancelable@^0.3.0":
   version "0.3.0"
@@ -2410,10 +2414,6 @@ pinkie-promise@^2.0.0:
 pinkie@^2.0.0:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
-
-pjson@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/pjson/-/pjson-1.0.9.tgz#8a9520ce76a4739f8fee91679dad6b065b1c7938"
 
 pn@^1.0.0:
   version "1.0.0"
