@@ -19,9 +19,10 @@
 
 - Confluence
 - JIRA
+- Bitbucket (planned)
 
 ## Getting started
-### 1. Fetch Atlassian session
+### 1. Fetch Atlassian session (for JIRA and Confluence)
 
 ```
 $ curl -X POST \
