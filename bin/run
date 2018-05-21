@@ -21,8 +21,9 @@ const ATLASSIAN = config.get('atlassian')
 const BITBUCKET = config.get('bitbucket')
 const BITBUCKET_PROJECTS = config.get('bitbucketProjects')
 const SLACK = config.get('slack')
-const BOT_USER_JIRA = config.get('slack.botUsers.jira')
+const BOT_USER_BITBUCKET = config.get('slack.botUsers.bitbucket')
 const BOT_USER_CONFLUENCE = config.get('slack.botUsers.confluence')
+const BOT_USER_JIRA = config.get('slack.botUsers.jira')
 const JIRA_PROJECTS = config.get('jiraProjects')
 const CONFLUENCE_SPACES = config.get('confluenceSpaces')
 
@@ -49,6 +50,7 @@ const CONFLUENCE_SPACES = config.get('confluenceSpaces')
     })
     await slackChannelResolver.sync()
 
+    const bitbucketPostman = new SlackPostman({ web, botUser: BOT_USER_CONFLUENCE })
     const confluencePostman = new SlackPostman({ web, botUser: BOT_USER_CONFLUENCE })
     const jiraPostman = new SlackPostman({ web, botUser: BOT_USER_JIRA })
     const slackBot = new SlackBot({
