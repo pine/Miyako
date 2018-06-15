@@ -50,7 +50,7 @@ const CONFLUENCE_SPACES = config.get('confluenceSpaces')
     })
     await slackChannelResolver.sync()
 
-    const bitbucketPostman = new SlackPostman({ web, botUser: BOT_USER_CONFLUENCE })
+    const bitbucketPostman = new SlackPostman({ web, botUser: BOT_USER_BITBUCKET })
     const confluencePostman = new SlackPostman({ web, botUser: BOT_USER_CONFLUENCE })
     const jiraPostman = new SlackPostman({ web, botUser: BOT_USER_JIRA })
     const slackBot = new SlackBot({
@@ -58,6 +58,7 @@ const CONFLUENCE_SPACES = config.get('confluenceSpaces')
       web,
       domain: team.domain,
       slackChannelResolver,
+      bitbucketResolver,
       confluenceResolver,
       jiraResolver,
       confluencePostman,
