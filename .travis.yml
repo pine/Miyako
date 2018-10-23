@@ -3,4 +3,4 @@ node_js:
   - 10
 
 script:
-  - yarn run test-ci
+  - travis_retry yarn run test-ci
