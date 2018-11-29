@@ -19,10 +19,9 @@
 
 - Confluence
 - JIRA
-- Bitbucket (planned)
 
 ## Getting started
-### 1. Fetch Atlassian session (for JIRA and Confluence)
+### 1. Fetch Atlassian session
 
 ```
 $ curl -X POST \
@@ -47,5 +46,3 @@ $ ./bin/run
 
 ## License
 MIT &copy; Pine Mizune
-
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpine%2FMiyako.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpine%2FMiyako?ref=badge_large)
